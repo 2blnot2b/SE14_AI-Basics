@@ -1,9 +1,6 @@
 # Artificial Intelligence Basics
 
-
-| ![AI Basics](Assets/banner/AIBasics.png) |
-|:--:|
-| <h6>Image Credits - [Javier Vargas](https://lumu.io/blog/artificial-intelligence-cybersecurity/)</h6>|
+![AI Basics](Assets/banner/AIBasics.png)
 
 #### Student Name: Nino Lindenberg
 #### University: CODE University of Applied Sciences

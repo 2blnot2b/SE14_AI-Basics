@@ -15,8 +15,8 @@
 2. The 4 Areas of AI
 3. Projects:
 
-    - [Planning: TicTacToe]()
-    - [Reasoning: Knights]()
+    - [Planning: Tic Tac Toe]()
+    - [Reasoning: Knights and Knaves]()
     - [Optimization: Crosswords]()
     - [Learning: Nim]()
 
@@ -44,8 +44,8 @@ The first part enables me to communicate within the AI domain, to understand the
 
 ## Projects
 
-- TicTacToe - Implementation of minimax and alpha-beta pruning algorithms to solve "adversarial search and games" problem
-- Knights - Implementation of a knowledge-based agent: How to make our AI reasons logically
+- Tic Tac Toe - Implementation of minimax and alpha-beta pruning algorithms to solve "adversarial search and games" problem
+- Knights and Knaves - Implementation of a knowledge-based agent: How to make our AI reasons logically
 - Crosswords - Implementation of backtracking search algorithm to solve the constaint satisfaction problems
 - Nim - Implementation of reinforcement learning algorithm
 
@@ -54,3 +54,4 @@ The first part enables me to communicate within the AI domain, to understand the
 2. [Google Classroom: SE_14 - Artificial Intelligence Basics](https://classroom.google.com/u/0/c/MzA1Mzk0ODY0MTI3)
 3. [Artificial Intelligence: A Modern Approcah, 4th Global Edition](http://aima.cs.berkeley.edu/global-index.html)
 4. [Russel, J. and Norvic, P. (2021). Artificiall Intelligence: A Modern Approach. 4th Global edn. Pearson Education 2021.](https://www.amazon.de/Artificial-Intelligence-Modern-Approach-Global/dp/1292401133/ref=asc_df_1292401133/?tag=googshopde-21&linkCode=df0&hvadid=500783497845&hvpos=&hvnetw=g&hvrand=15265746337720976469&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9043086&hvtargid=pla-1219002048885&psc=1&th=1&psc=1)
+5. [CS50: Introduction to Artificial Intelligence with Python](https://cs50.harvard.edu/ai/2020/)

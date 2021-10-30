@@ -10,7 +10,7 @@
 #### Study: Software Engineering (B.Sc.)
 #### Semester: Fall Semester 2021 / Third Semester
 #### Module: SE14_AIBasics
-### Module Coordinator: Frank Trollmann, Ph.D.
+#### Module Coordinator: Frank Trollmann, Ph.D.
 
 # Content
 

@@ -5,11 +5,11 @@
 |:--:|
 | <h6>Image Credits - [Javier Vargas](https://lumu.io/blog/artificial-intelligence-cybersecurity/)</h6>|
 
-### Student Name: Nino Lindenberg
-### University: CODE University of Applied Sciences
-### Study: Software Engineering (B.Sc.)
-### Semester: Fall Semester 2021 / Third Semester
-### Module: SE14_AIBasics
+#### Student Name: Nino Lindenberg
+#### University: CODE University of Applied Sciences
+#### Study: Software Engineering (B.Sc.)
+#### Semester: Fall Semester 2021 / Third Semester
+#### Module: SE14_AIBasics
 ### Module Coordinator: Frank Trollmann, Ph.D.
 
 # Content

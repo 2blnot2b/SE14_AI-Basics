@@ -15,7 +15,7 @@
 2. The 4 Areas of AI
 3. Projects:
 
-    - [Planning: Tic Tac Toe]()
+    - [Planning: Tic-Tac-Toe]()
     - [Reasoning: Knights and Knaves]()
     - [Optimization: Crosswords]()
     - [Learning: Nim]()
@@ -44,7 +44,7 @@ The first part enables me to communicate within the AI domain, to understand the
 
 ## Projects
 
-- Tic Tac Toe - Implementation of minimax and alpha-beta pruning algorithms to solve "adversarial search and games" problem
+- Tic-Tac-Toe - Implementation of minimax and alpha-beta pruning algorithms to solve "adversarial search and games" problem
 - Knights and Knaves - Implementation of a knowledge-based agent: How to make our AI reasons logically
 - Crosswords - Implementation of backtracking search algorithm to solve the constaint satisfaction problems
 - Nim - Implementation of reinforcement learning algorithm

@@ -159,9 +159,6 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
 
-    # Start counting the time complexity for minimax algorithm
-    start = time.time()
-
     # If AI starts, it starts from the first row and first col (0, 0)
     if terminal(board):
         return None
@@ -170,14 +167,14 @@ def minimax(board):
     opt_action = None
 
     # Best possible action to achieve maximum value
-    def max_val(board):
+    def max_val(board, depth):
         """
         Return the best possible maximum value out of all minimum values
         """
 
         # Always check the state of the board
         if terminal(board):
-            return utility(board)
+            return utility(board), depth+1
 
         # The worst possible starting value for finding the max value is the negative infinity (lowest value)
         val = -math.inf
@@ -185,18 +182,20 @@ def minimax(board):
         for action in actions(board):
 
             # Assigning the maximum out of all the minimum values
-            val = max(val, min_val(result(board, action)))
-        return val
+            best_val, depth = min_val(result(board, action), depth)
+            val = max(val, best_val)
+
+        return val, depth+1
 
     # Best possible action to achieve minimum value
-    def min_val(board):
+    def min_val(board, depth):
         """
         Return the best possible minimum value out of all maximum values
         """
 
         # Always check the state of the board
         if terminal(board):
-            return utility(board)
+            return utility(board), depth+1
 
         # The worst possible starting value for finding the minimum value is the positive infinity (highest value)
         val = math.inf
@@ -204,14 +203,124 @@ def minimax(board):
         for action in actions(board):
 
             # Assigning the minimum out of all the maximum values
-            val = min(val, max_val(result(board, action)))
-        return val
+            best_val, depth = max_val(result(board, action), depth)
+            val = min(val, best_val)
+
+        return val, depth+1
 
     # AI is MAX player
     if player(board) == X:
+        # Start counting the time complexity for minimax algorithm
+        start = time.time()
+        
+        # Worst possible value for a max player is negative infinity
+        val = -math.inf
 
-        if actions(board) == initial_state():
-            return (0, 1)
+        for action in actions(board):
+
+            # Choosing the best value for MAX player which is between the worst possible value and the value chosen by MIN player in each iteration
+            best_val, depth = min_val(result(board, action), 0)
+
+            # Compare the previous best value with the new value from the current iteration
+            if best_val >= val:
+
+                # Assigning best value and its related action as the most optimal action (or move) for the MAX player (or X) in each iteration
+                val = best_val
+                opt_action = action
+        # Timer stopped!
+        end = time.time()
+
+        # Output is the performance quality of this Minimax algorithm
+        print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
+        print(depth)
+    else: # AI is MIN player
+        # Start counting the time complexity for minimax algorithm
+        start = time.time()
+        
+        val = math.inf
+        for action in actions(board):
+
+            # Choosing the best value for MIN player which is between the worst possible value and the value chosen by MAX player in each iteration
+            best_val, depth = max_val(result(board, action), 0)
+
+            # Compare the previous best value with the new value from the current iteration
+            if best_val <= val:
+
+                # Assigning best value and its related action as the most optimal action (or move) for the MIN player (or O) in each iteration
+                val = best_val
+                opt_action = action
+
+        # Timer stopped!
+        end = time.time()
+
+        # Output is the performance quality of this Minimax algorithm
+        print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
+        print(depth)
+    # Output is the best possible action
+    return opt_action
+
+# Alpha-Beta Pruning
+def alpha_beta_pruning(board):
+    """
+    Returns the optimal action for the current player on the board within a shorter timer.
+    """
+
+    # If AI starts, it starts from the first row and first col (0, 0)
+    if terminal(board):
+        return None
+
+
+    # Alpha value
+    alpha = -math.inf
+
+    # Beta value
+    beta = math.inf
+
+    # Best possible move for the AI as X and as O
+    opt_action = set()
+
+    def max_alpha_beta(board, alpha, beta, depth):
+        # Always check the state of the board
+        if terminal(board):
+            return utility(board), depth+1
+
+        val = -math.inf
+        for action in actions(board):
+
+            # Searching for the best value for MAX player and counting the depth of the search
+            best_val, depth = max_alpha_beta(result(board, action), alpha, beta, depth)
+            val =  max(val, best_val)
+            alpha = max(alpha, val)
+
+            # if alpha score is bigger or at least as big as beta, then stop and cut off other leafs
+            if alpha >= beta:
+                break
+
+        return val, depth+1
+
+    def min_alpha_beta(board, alpha, beta, depth):
+        # Always check the state of the board
+        if terminal(board):
+            return utility(board), depth+1
+
+        val = math.inf
+        for action in actions(board):
+
+            # Searching for the best value for MIN player and counting the depth of the search
+            best_val, depth = max_alpha_beta(result(board, action), alpha, beta, depth)
+            val = min(val, best_val)
+            beta = min(val, beta)
+
+            # if alpha score is bigger or at least as big as beta, then stop and cut off other leafs
+            if alpha >= beta:
+                break
+
+        return val, depth+1
+
+    # AI is MAX player
+    if player(board) == X:
+        # Start counting the time complexity for minimax algorithm
+        start = time.time()
 
         # Worst possible value for a max player is negative infinity
         val = -math.inf
@@ -219,34 +328,29 @@ def minimax(board):
         for action in actions(board):
 
             # Choosing the best value for MAX player which is between the worst possible value and the value chosen by MIN player in each iteration
-            best_val = min_val(result(board, action))
+            best_val, depth = max_alpha_beta(result(board, action), alpha, beta, 0)
 
-            # Compare the previous best value with the new value from the current iteration
-            if best_val > val:
-
-                # Assigning best value and its related action as the most optimal action (or move) for the MAX player (or X) in each iteration
+            if best_val >= val:
                 val = best_val
                 opt_action = action
-    else:
-        # AI is MIN player
+        end = time.time()
+        # Output is the performance quality of this Minimax algorithm
+        print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
+        print(depth)
+    else: # AI is MIN player
+        # Start counting the time complexity for minimax algorithm
+        start = time.time()
         val = math.inf
         for action in actions(board):
 
-            # Choosing the best value for MIN player which is between the worst possible value and the value chosen by MAX player in each iteration
-            best_val = max_val(result(board, action))
+            # Choosing the best value for MAX player which is between the worst possible value and the value chosen by MIN player in each iteration
+            best_val, depth = min_alpha_beta(result(board, action), alpha, beta, 0)
 
-            # Compare the previous best value with the new value from the current iteration
-            if best_val < val:
-
-                # Assigning best value and its related action as the most optimal action (or move) for the MIN player (or O) in each iteration
+            if best_val <= val:
                 val = best_val
                 opt_action = action
-
-    # Timer stopped!
-    end = time.time()
-
-    # Output is the performance quality of this Minimax algorithm
-    print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
-
-    # Output is the best possible action
+        end = time.time()
+        # Output is the performance quality of this Minimax algorithm
+        print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
+        print(depth)
     return opt_action

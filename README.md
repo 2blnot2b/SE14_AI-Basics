@@ -15,7 +15,7 @@
 2. The 4 Areas of AI
 3. Projects:
 
-    - [Planning: Tic-Tac-Toe]()
+    - [Planning: Tic-Tac-Toe](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/01_Planning/tictactoe)
     - [Reasoning: Knights and Knaves]()
     - [Optimization: Crosswords]()
     - [Learning: Nim]()

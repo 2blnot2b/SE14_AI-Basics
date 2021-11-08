@@ -16,9 +16,9 @@
 3. Projects:
 
     - [Planning: Tic-Tac-Toe](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/01_Planning/tictactoe)
-    - [Reasoning: Knights and Knaves]()
-    - [Optimization: Crosswords]()
-    - [Learning: Nim]()
+    - [Reasoning: Knights and Knaves](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Reasoning/knightsandknaves)
+    - [Optimization: Crosswords](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/03_Optimization/crosswords)
+    - [Learning: Nim](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/04_Learning/nim)
 
 4. Learning Resources
 

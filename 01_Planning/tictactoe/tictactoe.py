@@ -156,20 +156,19 @@ def utility(board):
 
 def minimax(board):
     """
-    Returns the optimal action for the current player on the board.
+    Returns the optimal action for the agent based on all search tree possible.
     """
 
-    # If AI starts, it starts from the first row and first col (0, 0)
+    # Evaluate if the game has ended
     if terminal(board):
         return None
 
     # Best possible move for the AI as X and as O
     opt_action = None
 
-    # Best possible action to achieve maximum value
     def max_val(board, depth):
         """
-        Return the best possible maximum value out of all minimum values
+        Return the highest possible value and the total searched leaf nodes.
         """
 
         # Always check the state of the board
@@ -181,16 +180,15 @@ def minimax(board):
 
         for action in actions(board):
 
-            # Assigning the maximum out of all the minimum values
+            # Assigning the best/highest possible value from the possbile moves/actions left
             best_val, depth = min_val(result(board, action), depth)
             val = max(val, best_val)
 
         return val, depth+1
 
-    # Best possible action to achieve minimum value
     def min_val(board, depth):
         """
-        Return the best possible minimum value out of all maximum values
+        Return the lowest possible value and the total searched leaf nodes.
         """
 
         # Always check the state of the board
@@ -202,7 +200,7 @@ def minimax(board):
 
         for action in actions(board):
 
-            # Assigning the minimum out of all the maximum values
+            # Assigning the best/lowest possible value from all possbile moves/actions left
             best_val, depth = max_val(result(board, action), depth)
             val = min(val, best_val)
 
@@ -213,7 +211,7 @@ def minimax(board):
         # Start counting the time complexity for minimax algorithm
         start = time.time()
         
-        # Worst possible value for a max player is negative infinity
+        # Worst possible value for MAX player is "LOWEST VALUE"
         val = -math.inf
 
         for action in actions(board):
@@ -227,16 +225,17 @@ def minimax(board):
                 # Assigning best value and its related action as the most optimal action (or move) for the MAX player (or X) in each iteration
                 val = best_val
                 opt_action = action
-        # Timer stopped!
-        end = time.time()
 
-        # Output is the performance quality of this Minimax algorithm
+        # Output describes one of the performance criterias of Minimax algorithm; Time complexity
+        end = time.time()
         print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
         print(depth)
+
     else: # AI is MIN player
         # Start counting the time complexity for minimax algorithm
         start = time.time()
-        
+
+        # Worst possible value for MIN player is "HIGHEST VALUE"
         val = math.inf
         for action in actions(board):
 
@@ -250,10 +249,8 @@ def minimax(board):
                 val = best_val
                 opt_action = action
 
-        # Timer stopped!
+        # Output describes one of the performance criterias of Minimax algorithm; Time complexity
         end = time.time()
-
-        # Output is the performance quality of this Minimax algorithm
         print(f"<<< MINIMAX Time Complexity 'O(b^m)': {round(end - start, 13)} >>>\n")
         print(depth)
     # Output is the best possible action
@@ -262,22 +259,27 @@ def minimax(board):
 # Alpha-Beta Pruning
 def alpha_beta_pruning(board):
     """
-    Returns the optimal action for the current player on the board within a shorter timer.
+    Returns the optimal action for the agent by ignoring portions of the search tree that make no difference to the optimal action.
     """
 
-    # If AI starts, it starts from the first row and first col (0, 0)
+    # Evaluate if the game has ended
     if terminal(board):
         return None
 
-    # Alpha value
+    # Alpha value or "at least"
     alpha = -math.inf
 
-    # Beta value
+    # Beta value or "at most"
     beta = math.inf
-    # Best possible move for the AI as X and as O
+
+    # Best possible move for the AI as X (MAX) or as O (MIN)
     opt_action = set()
 
     def max_alpha_beta(board, alpha, beta, depth):
+        """
+        Returns the highest possible value and the total searched leaf nodes.        
+        """
+
         # Always check the state of the board
         if terminal(board):
             return utility(board), depth+1
@@ -285,18 +287,23 @@ def alpha_beta_pruning(board):
         val = -math.inf
         for action in actions(board):
 
-            # Searching for the best value for MAX player and counting the depth of the search
+            # Searching for the "HIGH VALUE" for MAX
             best_val, depth = min_alpha_beta(result(board, action), alpha, beta, depth)
             val =  max(val, best_val)
 
-            # if alpha score is bigger or at least as big as beta, then stop and cut off other leafs
+             # Val represents the current "HIGH VALUE" from the above iteration and Beta represents the last chosen "LOW VALUE" of MIN player
             if val >= beta:
                 return val, depth+1
             
+            # If the current "HIGH VALUE" is lower than the "LOW VALUE", than find the best possible value between the current val and the Alpha value from last iteration
             alpha = max(alpha, val)
         return  alpha, depth+1
 
     def min_alpha_beta(board, alpha, beta, depth):
+        """
+        Returns the lowest possible value and the total searched leaf nodes.        
+        """
+
         # Always check the state of the board
         if terminal(board):
             return utility(board), depth+1
@@ -304,14 +311,15 @@ def alpha_beta_pruning(board):
         val = math.inf
         for action in actions(board):
 
-            # Searching for the best value for MIN player and counting the depth of the search
+            # Searching for the "LOW VALUE" for MIN
             best_val, depth = max_alpha_beta(result(board, action), alpha, beta, depth)
             val = min(val, best_val)
 
-            # if alpha score is bigger or at least as big as beta, then stop and cut off other leafs
+            # Val represents the current "LOW VALUE" from the above iteration and Alpha represents the last chosen "HIGH VALUE" of MAX player
             if val <= alpha:
                 return val, depth+1
 
+            # If the current "LOW VALUE" is higher than the "HIGH VALUE", than find the best possible value between the current val and the Beta value from last iteration
             beta = min(beta, val)
         return beta, depth+1
 
@@ -320,38 +328,43 @@ def alpha_beta_pruning(board):
         # Start counting the time complexity for minimax algorithm
         start = time.time()
 
-        # Worst possible value for a max player is negative infinity
+        # Worst possible value for a max player is negative infinity or the lowest value for MIN
         val = -math.inf
 
         for action in actions(board):
 
-            # Choosing the best value for MAX player which is between the worst possible value and the value chosen by MIN player in each iteration
+            # Choosing the best/highest value for MAX player based on the value chosen by MIN player in the last move
             best_val, depth = min_alpha_beta(result(board, action), alpha, beta, 0)
 
+            # The value always comes with 1 specific move/action option and this will be the best possible move/action for the MAX player
             if best_val > val:
                 val = best_val
                 opt_action = action
 
+        # Output describes one of the performance criterias of Alpha-Beta Pruning algorithm; Time complexity
         end = time.time()
-        # Output is the performance quality of this Minimax algorithm
         print(f"<<< MINIMAX Time Complexity 'O(b^m/2)': {round(end - start, 13)} >>>\n")
         print(depth)
+
     else: # AI is MIN player
         # Start counting the time complexity for minimax algorithm
         start = time.time()
+
+        # Worst possible value for a max player is negative infinity or the highest value for MAX
         val = math.inf
 
         for action in actions(board):
 
-            # Choosing the best value for MAX player which is between the worst possible value and the value chosen by MIN player in each iteration
+            # Choosing the best/lowest value for MIN player based on the value chosen by MAX player in the last move
             best_val, depth = max_alpha_beta(result(board, action), alpha, beta, 0)
 
+            # The value always comes with 1 specific move/action option and this will be the best possible move/action for the MIN player
             if best_val < val:
                 val = best_val
                 opt_action = action
 
+        # Output describes one of the performance criterias of Alpha-Beta Pruning algorithm; Time complexity
         end = time.time()
-        # Output is the performance quality of this Minimax algorithm
         print(f"<<< MINIMAX Time Complexity 'O(b^m/2)': {round(end - start, 13)} >>>\n")
         print(depth)
 

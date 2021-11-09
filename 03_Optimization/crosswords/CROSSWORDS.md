@@ -1,3 +1,3 @@
 # Crosswords
 
-![CW](../Assets/optimization/CW.png)
+![CW](../../Assets/optimization/CW.png)

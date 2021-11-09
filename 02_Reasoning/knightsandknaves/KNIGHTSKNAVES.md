@@ -1,3 +1,3 @@
 # Knights and Knaves
 
-![KK](../Assets/reasoning/KK.png)
+![KK](../../Assets/reasoning/KK.png)

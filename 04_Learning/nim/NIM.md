@@ -1,3 +1,3 @@
 # Nim
 
-![nim](../Assets/learning/Nim.png)
+![nim](../../Assets/learning/Nim.png)

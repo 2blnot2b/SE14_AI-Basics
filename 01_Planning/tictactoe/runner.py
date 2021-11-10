@@ -1,3 +1,5 @@
+from minimax import *
+from alpha_beta_pruning import *
 import pygame
 import sys
 import time
@@ -112,8 +114,8 @@ while True:
         if user != player and not game_over:
             if ai_turn:
                 time.sleep(0.5)
-                #move = ttt.alpha_beta_pruning(board)
-                move = ttt.minimax(board)
+                move = alpha_beta_pruning(board)
+                #move = minimax(board)
                 board = ttt.result(board, move)
                 ai_turn = False
             else:

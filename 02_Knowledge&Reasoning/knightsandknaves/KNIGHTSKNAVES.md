@@ -57,7 +57,7 @@
     
     The formal definition of entailment is that the sentence $\alpha$ entails the sentence $\beta$ if and only if in every model in which $\alpha$ is true, $\beta$ will also be true. This is written as 
     
-    ![Entailment-Def](../../Assets/knowledge_reasoning/maths/entailment.png) iff ![Formal-Entailment](../../Assets/knowledge_reasoning/maths/formal_entailment.png).
+    ![Entailment-Def](../../Assets/knowledge_reasoning/maths/entailment.png) iff ![Formal-Entailment](../../Assets/knowledge_reasoning/maths/formal_entailment_g.png).
     
     Now, the connection between entailment and inference algorithm is that the entailment is applied to derive conslusions that will carry out the logical inference. To understand it better, think of "Entailment" as a needle in a haystack and the inference is the process to find it.
 

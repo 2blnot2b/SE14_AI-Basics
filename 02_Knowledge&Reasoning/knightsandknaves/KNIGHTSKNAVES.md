@@ -47,19 +47,18 @@
 - **Knowledge-Based Agent**
   
     In the knowledge and reasoning problem, there is logical agents or "Knowledge-Based" agents that use reasoning over the representation of knowledge to decide which actions to take. The core of a knowledge-based agent is the so called "Knowledge Base" (KB) which technically described as a set of sentences in which each sentence is expressed in a language called a "Knowledge Representation Language".
-    A knowledge-based agent has the ability to add new sentences and also to query what is known from inside its knowledge base. The standard names for both operations, "Adding" new sentences and "Querying" known sentences, are "Tell" and "Ask". A knowledge-based agent starts with an empty knowledge or initia knowledge. There are 2 possibilities to add sentences to an agent, firstly using the "Declarative Approach", and/or secondly, we can provide a KB with a mechanism to learn new sentences by itself (a combination between "Knowledge and Reasoning" field and "Learning" field).
+
+    A knowledge-based agent has the ability to add new sentences and also to query what is known from inside its knowledge base. The standard names for both operations, "Adding" new sentences and "Querying" known sentences, are "Tell" and "Ask". A knowledge-based agent starts with an empty knowledge or initial knowledge. There are 2 possibilities to add sentences to an agent, firstly using the "Declarative Approach", and/or secondly, we can provide a KB with a mechanism to learn new sentences by itself (a combination between "Knowledge and Reasoning" field and "Learning" field).
 
 - ### **Entailment**
 
     To be able to explain what an inference algorithm does, we need to understand to concept of entailment. In logical reasoning there is an involvement of logical entailment between sentences which is the idea that a sentence follows logically from another sentence. Mathematically, this idea is written
-    
-    <img src="http://www.sciweavers.org/tex2img.php?eq=M%28%5Calpha%29%20%5Csubseteq%20M%28%5Cbeta%29&bc=Transparent&fc=White&im=png&fs=12&ff=txfonts&edit=0" align="center" border="0" alt="M(\alpha) \subseteq M(\beta)" width="94" height="18" />
 
-    ![Entailment](../../Assets/knowledge_reasoning/maths/entailment.png)
+    ![Entailment](../../Assets/knowledge_reasoning/maths/entailment_def.png)
     
-    The formal definition of entailment is that the sentence $\alpha$ entails the sentence $\beta$ if and only if in every model in which $\alpha$ is true, $\beta$ will also be true. This is written as 
+    The formal definition of entailment is that the sentence alpha entails the sentence beta if and only if in every model in which alpha is true, beta will also be true. This is written as 
     
-    ![Entailment-Def](../../Assets/knowledge_reasoning/maths/entailment.png) iff ![Formal-Entailment](../../Assets/knowledge_reasoning/maths/formal_entailment_g.png).
+    ![Entailment-Def](../../Assets/knowledge_reasoning/maths/entailment_def.png) iff ![Formal-Entailment](../../Assets/knowledge_reasoning/maths/formal_entailment.png).
     
     Now, the connection between entailment and inference algorithm is that the entailment is applied to derive conslusions that will carry out the logical inference. To understand it better, think of "Entailment" as a needle in a haystack and the inference is the process to find it.
 
@@ -77,7 +76,7 @@
 
     Logical connectives are operators that construct complex sentences from simpler ones. There are 5 connectives:
 
-    1. A sentence such as $\neg P$ is pronounced the negation of $P$.
+    1. A sentence such with ![Not](../../Assets/knowledge_reasoning/maths/neg_p.png) is pronounced the negation of P.
 
         ![Not](../../Assets/knowledge_reasoning/Not.png)
 
@@ -89,11 +88,11 @@
 
         ![Or](../../Assets/knowledge_reasoning/Or.png)
 
-    4. Implication such as $(P \wedge Q) \Rightarrow \neg R$ has 2 parts. The $(P \wedge Q)$ is called "Premise" or "Entecedent" and $\neg R$ "Conclusion" or "Consequent". The right arrow symbolizes the "Implication".
+    4. Implication such as ![Imp](../../Assets/knowledge_reasoning/maths/implication-1.png) has 2 parts. The ![Imp](../../Assets/knowledge_reasoning/maths/p_wedge_q.png) is called "Premise" or "Entecedent" and ![Imp](../../Assets/knowledge_reasoning/maths/neg_r.png) "Conclusion" or "Consequent". The right arrow symbolizes the "Implication".
 
         ![Implication](../../Assets/knowledge_reasoning/Implication.png)
 
-    5. Biconditional $\Leftrightarrow$ symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because $P$ is false and $Q$ is also false. Biconditional is true if and only if $P$ and $Q$ have the same truthy or falsy value.
+    5. Biconditional ![Imp](../../Assets/knowledge_reasoning/maths/bicon.png) symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because P is false and Q is also false. Biconditional is true if and only if $P$ and Q have the same truthy or falsy value.
 
         ![Biconditional](../../Assets/knowledge_reasoning/Biconditional.png)
 
@@ -105,9 +104,7 @@
     
     The inference algorithm is generally notated as
 
-    $$
-    KB|=\alpha
-    $$
+    ![Inference](../../Assets/knowledge_reasoning/kb_a.png)
 
     One of the approach for inference algorithm is the model checking approach which is used in this project. Models in inference algorithm are just the assignment of true or false to every proposition symbol:
         
@@ -115,9 +112,7 @@
     
     Model checking works by enumerating all possible models to check that $\alpha$ is true in all models in which KB is true, or mathematically written
 
-    $$
-    M(KB)\subseteq M(\alpha)
-    $$
+    ![Model](../../Assets/knowledge_reasoning/maths/mkb_ma.png)
 
     ![Model-Checking](../../Assets/knowledge_reasoning/MC.png)
 

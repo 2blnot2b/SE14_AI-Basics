@@ -53,6 +53,8 @@
 
     To be able to explain what an inference algorithm does, we need to understand to concept of entailment. In logical reasoning there is an involvement of logical entailment between sentences which is the idea that a sentence follows logically from another sentence. Mathematically, this idea is written
     
+    <img src="http://www.sciweavers.org/tex2img.php?eq=M%28%5Calpha%29%20%5Csubseteq%20M%28%5Cbeta%29&bc=Transparent&fc=White&im=png&fs=12&ff=txfonts&edit=0" align="center" border="0" alt="M(\alpha) \subseteq M(\beta)" width="94" height="18" />
+
     ![Entailment](../../Assets/knowledge_reasoning/maths/entailment.png)
     
     The formal definition of entailment is that the sentence $\alpha$ entails the sentence $\beta$ if and only if in every model in which $\alpha$ is true, $\beta$ will also be true. This is written as 

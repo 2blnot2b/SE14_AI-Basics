@@ -10,18 +10,18 @@
     
     "Knights and Knaves" is a logical puzzle written by Raymond Smullyan in 1978. In this puzzle, the initial knowledge is given:
 
-      1. Each character can only be either a knight or a knave.
-      2. A knight will always tell the truth - If a knight said a sentence, it is always true.  
-      3. A knave will always lie - If a knave said a sentence, it is awlays false.
+    1. Each character can only be either a knight or a knave.
+    2. A knight will always tell the truth - If a knight said a sentence, it is always true.  
+    3. A knave will always lie - If a knave said a sentence, it is awlays false.
     
     The objective of this logical puzzle is to decide who is the knight and who is the knave for all characters.
     
     The file "logic.py" contains:
 
-      1. Sentence class - To check if the sentence or sentences typed in by the player follow the syntaxing rule.
-      2. Symbol class - To represent the sentence (same as propositional symbols).
-      3. All logical connectives classes - These classes can be composed within each other to construct a complex sentence.
-      4. model_check function - To enumerate all possible models to check that all assignments of "True" and "False" through the logcal connective classes is true in all models in which the knowledge base is true.
+    1. Sentence class - To check if the sentence or sentences typed in by the player follow the syntaxing rule.
+    2. Symbol class - To represent the sentence (same as propositional symbols).
+    3. All logical connectives classes - These classes can be composed within each other to construct a complex sentence.
+    4. model_check function - To enumerate all possible models to check that all assignments of "True" and "False" through the logcal connective classes is true in all models in which the knowledge base is true.
 
     The file "puzzle.py" contains 4 different scenes with characters A, B, and in one case C who say a sentence or two. This file is where the player do the work!
 
@@ -29,28 +29,25 @@
 
 - **Terminology**
 
-    1. Knowledge Base (KB) - A set of sentences.
-    2. Sentence - A physical configuration of the agent.
-    3. Reasoning - A process of constructing new physical configurations from old ones.
-    4. Knowledge Representation Language - A language that represents some assertions of the world.
-    5. Atomic sentence - A sentence consists of a single propositional symbol.
-    6. Axiom - a new sentence contains knowledge that is not derived from any other "known" sentences.
-    7. Complex senmtence - A new sentence constructed from other simpler sentences using logical connectives.
-    8. Literal - There are 2 literals:
-        - Positive literal - An atomic sentence,
-        - Negative literal - A negated atomic sentence.
-    9. Syntax - A rule that defines the allowable sentences.
-    10. Semantics - The meaning of sentences.
-    11. Logic - An interdisciplinary field which studies truth and reasoning and which applies syllogism.
-    12. Declarative Approach - Telling the agent all sentences one by one until the agent knows how to operate in its environment.
-<br>
-<br>
+  1. Knowledge Base (KB) - A set of sentences.
+  2. Sentence - A physical configuration of the agent.
+  3. Reasoning - A process of constructing new physical configurations from old ones.
+  4. Knowledge Representation Language - A language that represents some assertions of the world.
+  5. Atomic sentence - A sentence consists of a single propositional symbol.
+  6. Axiom - a new sentence contains knowledge that is not derived from any other "known" sentences.
+  7. Complex senmtence - A new sentence constructed from other simpler sentences using logical connectives.
+  8. Literal - There are 2 literals:
+    - Positive literal - An atomic sentence,
+    - Negative literal - A negated atomic sentence.
+  9. Syntax - A rule that defines the allowable sentences.
+  10. Semantics - The meaning of sentences.
+  11. Logic - An interdisciplinary field which studies truth and reasoning and which applies syllogism.
+  12. Declarative Approach - Telling the agent all sentences one by one until the agent knows how to operate in its environment.
 
 - **Knowledge-Based Agent**
   
     In the knowledge and reasoning problem, there is logical agents or "Knowledge-Based" agents that use reasoning over the representation of knowledge to decide which actions to take. The core of a knowledge-based agent is the so called "Knowledge Base" (KB) which technically described as a set of sentences in which each sentence is expressed in a language called a "Knowledge Representation Language".
     A knowledge-based agent has the ability to add new sentences and also to query what is known from inside its knowledge base. The standard names for both operations, "Adding" new sentences and "Querying" known sentences, are "Tell" and "Ask". A knowledge-based agent starts with an empty knowledge or initia knowledge. There are 2 possibilities to add sentences to an agent, firstly using the "Declarative Approach", and/or secondly, we can provide a KB with a mechanism to learn new sentences by itself (a combination between "Knowledge and Reasoning" field and "Learning" field).
-
 
 - ### **Entailment**
 
@@ -277,4 +274,4 @@
 
         ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-3.png)
 
-### Location: https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge&Reasoning/knightsandknaves
+### Location: https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge%26Reasoning/knightsandknaves

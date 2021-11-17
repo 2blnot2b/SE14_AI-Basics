@@ -81,7 +81,7 @@ knowledge2 = And(
     #Implication(AKnight, sentence_2_A), # if A is a Knight then sentence_2_A must be True
     #Implication(AKnave, Not(sentence_2_A)), # If A is a Knave (lier), then sentence_2_A must be False
     #Implication(BKnight, sentence_2_B), # If B is the Knight, then sentence_2_B must be True
-    #Implication(BKnave, Not(sentence_2_B)), if B is the Knave, then sentence_2_B must be False
+    #Implication(BKnave, Not(sentence_2_B)), # if B is the Knave, then sentence_2_B must be False
 
 ########################################################################################################################
 ########################### Reasoning Version Short ####################################################################
@@ -116,10 +116,10 @@ knowledge3 = And(
     #Not(And(CKnight, CKnave)),
 
     # Knowledge Base based on what A, B, and C said
-    #Implication(AKnight, sentence_3_A), # If A is a Knight, then most probably A said "I am a Knight"
-    #Implication(AKnave, sentence_3_A), # If A is the Knave, then most probably A also said "I am a Knight" (since a Knave always lie!)
+    #Implication(AKnight, And(BKnave, CKnight)), # If A is a Knight, then most probably A said "I am a Knight"
+    #Implication(AKnave, And(BKnight, Not(sentence_3_A))), # If A is the Knave, then B is the Knight cause B told the turth about A said that A is a Knave which means A lied to say that A is either a Knight or a Knave.
     #Implication(BKnight, sentence_3_B), # If B is the Knight, then A and B must be Knaves! Otherwise B is the Knave!
-    #Implication(BKnave, Not(sentence_3_B)), # If so, then sentence_3_B is a lie. This confirms that B is the Knave!
+    #Implication(BKnave, And(AKnight, Not(sentence_3_B))), # If so, then sentence_3_B is a lie. This confirms that B is the Knave!
     #Implication(CKnight, And(BKnave, sentence_3_C)), # If C is a Knight, then A must be a Knight since he told that A is a Knight and a Knight never lies
     #Implication(CKnave, And(BKnight, Not(sentence_3_C))) # If C is a Knave, then A must be a Knave too and in this case B must be the Knight since B told A and C are the Knaves
 
@@ -136,7 +136,6 @@ knowledge3 = And(
     Biconditional(CKnight, sentence_3_C) # C can only be the Knight, if and only if sentence_3_C is True which is A is a Knight, otherwise (False) C is the Knave
 )
 
-
 def main():
     symbols = [AKnight, AKnave, BKnight, BKnave, CKnight, CKnave]
     puzzles = [
@@ -152,7 +151,7 @@ def main():
         else:
             for symbol in symbols:
                 if model_check(knowledge, symbol):
-                    print(f"    {symbol}")
+                    print(f"\n    {symbol}\n")
 
 
 if __name__ == "__main__":

@@ -92,7 +92,7 @@
 
         ![Implication](../../Assets/knowledge_reasoning/Implication.png)
 
-    5. Biconditional ![Imp](../../Assets/knowledge_reasoning/maths/bicon.png) symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because P is false and Q is also false. Biconditional is true if and only if $P$ and Q have the same truthy or falsy value.
+    5. Biconditional ![Imp](../../Assets/knowledge_reasoning/maths/bicon.png) symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because P is false and Q is also false. Biconditional is true if and only if P and Q have the same truthy or falsy value.
 
         ![Biconditional](../../Assets/knowledge_reasoning/Biconditional.png)
 

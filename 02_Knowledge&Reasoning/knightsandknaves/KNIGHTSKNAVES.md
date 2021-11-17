@@ -53,9 +53,7 @@
 
     To be able to explain what an inference algorithm does, we need to understand to concept of entailment. In logical reasoning there is an involvement of logical entailment between sentences which is the idea that a sentence follows logically from another sentence. Mathematically, this idea is written
     
-    $$
-    \alpha |= \beta
-    $$
+    <img src="https://render.githubusercontent.com/render/math?math=\alpha |= \beta">
     
     The formal definition of entailment is that the sentence $\alpha$ entails the sentence $\beta$ if and only if in every model in which $\alpha$ is true, $\beta$ will also be true. This is written as $\alpha |= \beta$ iff $M(\alpha) \subseteq M(\beta)$.
     

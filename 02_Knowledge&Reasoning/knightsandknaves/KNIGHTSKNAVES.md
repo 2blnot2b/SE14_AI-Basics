@@ -201,74 +201,74 @@
 
     Secondly, don't forget the 3 basic rules of the puzzle which is considered also as the Knowledge Base:
 
-      1. Each character can only be either a knight or a knave.
-      2. A knight will always tell the truth - If a knight said a sentence, it is always true.  
-      3. A knave will always lie - If a knave said a sentence, it is awlays false.
+    1. Each character can only be either a knight or a knave.
+    2. A knight will always tell the truth - If a knight said a sentence, it is always true.  
+    3. A knave will always lie - If a knave said a sentence, it is awlays false.
 
     Thirdly, my approach is to first translate the sentence said by any character into a complex sentence that will serve as an added knowledge base for the agent. Then, using declarative approach, I tell the agent about the all knowledge base starting the ones from the rules of the game, hence I have a pretty clear structured separated by the comment "Knowledge Base basd on the Game Rule" and "Knowledge Base based on what A, B, or C said".
 
     Since the implementation was pretty easy, I wrote down 2 reasonings fro each puzzle: "Reasoning Version Long" using "Or", "Not" and "And", and "Implication, and also "Reasoning VErsion Short" using "Biconditional" and "Not".
 
-1. Puzzle 0:
+  1. Puzzle 0:
 
-    - Added Knowledge base based on what A said:
+      - Added Knowledge base based on what A said:
 
-        ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-0.png)
+          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-0.png)
 
-    - Implemented Knowledge by declarative approach:
+      - Implemented Knowledge by declarative approach:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-0.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-0.png)
 
-    - Result:
-        
-        Since being both claseses at the same time is against the game rule and character B doesn't want or can't say that B is also both classes at the same time, this concludes that A must be lying, hence A is the Knave. Since B can't lie, hence B is the knight.
+      - Result:
+          
+          Since being both claseses at the same time is against the game rule and character B doesn't want or can't say that B is also both classes at the same time, this concludes that A must be lying, hence A is the Knave. Since B can't lie, hence B is the knight.
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-0.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-0.png)
 
-2. Puzzle 1:
-   
-    - Added Knowledge base based on what A said:
+  2. Puzzle 1:
+     
+      - Added Knowledge base based on what A said:
 
-        ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-1.png)
+          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-1.png)
 
-    - Implemented Knowledge by declarative approach:
+      - Implemented Knowledge by declarative approach:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-1.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-1.png)
 
-    - Result:
-        
-        Almost the same logic as by puzzle 0, but here character A said a sentence that is against the game rule which is A and B can only be either a knight or a knave. Each character being both at the same time is prohibited and both characters having the same classes (a knave and a knave or a knight and a knight) is also prohibited. In my implementation, the decisive point is where I added the sentence that A is actually a knight if B can confirm that B is actually a knave which by nature is impossible since it is prohibited by the game rule, but the machine doesn't know that.
+      - Result:
+          
+          Almost the same logic as by puzzle 0, but here character A said a sentence that is against the game rule which is A and B can only be either a knight or a knave. Each character being both at the same time is prohibited and both characters having the same classes (a knave and a knave or a knight and a knight) is also prohibited. In my implementation, the decisive point is where I added the sentence that A is actually a knight if B can confirm that B is actually a knave which by nature is impossible since it is prohibited by the game rule, but the machine doesn't know that.
 
-        Since I explained this in my approach strategy and the approach for the result is always the same, I will stop writting in the next puzzles and let my comments guide you.
+          Since I explained this in my approach strategy and the approach for the result is always the same, I will stop writting in the next puzzles and let my comments guide you.
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-1.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-1.png)
 
-3. Puzzle 2:
-   
-    - Added Knowledge base based on what A and B said:
+  3. Puzzle 2:
+     
+      - Added Knowledge base based on what A and B said:
 
-        ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-2.png)
+          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-2.png)
 
-    - Implemented Knowledge by declarative approach:
+      - Implemented Knowledge by declarative approach:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-2.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-2.png)
 
-    - Result:
+      - Result:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-2.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-2.png)
 
-4. Puzzle 3:
+  4. Puzzle 3:
 
-    - Added Knowledge base based on what A, B, and C said:
+      - Added Knowledge base based on what A, B, and C said:
 
-        ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-3.png)
+          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-3.png)
 
-    - Implemented Knowledge by declarative approach:
+      - Implemented Knowledge by declarative approach:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-3.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-3.png)
 
-    - Result:
+      - Result:
 
-        ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-3.png)
+          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-3.png)
 
 ### Location: https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge%26Reasoning/knightsandknaves

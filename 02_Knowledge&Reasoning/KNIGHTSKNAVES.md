@@ -1,6 +1,6 @@
 # Knights and Knaves
 
-![KnightsKnaves](../../Assets/knowledge_reasoning/KK.png)
+![KnightsKnaves](../Assets/knowledge_reasoning/KK.png)
 
 # Knowledge and Reasoning Problem
 
@@ -27,20 +27,33 @@
 
 ## Applied Algorithms: Inference Algorithm with Model Checking Approach
 
+- **Pseudo Code**
+
+  ![PC-IG](../Assets/knowledge_reasoning/PC-IG.png)
+
 - **Terminology**
 
   1. Knowledge Base (KB) - A set of sentences.
   2. Sentence - A physical configuration of the agent.
+
+        ![SiA](../Assets/knowledge_reasoning/SiA.png)
+
   3. Reasoning - A process of constructing new physical configurations from old ones.
   4. Knowledge Representation Language - A language that represents some assertions of the world.
   5. Atomic sentence - A sentence consists of a single propositional symbol.
   6. Axiom - a new sentence contains knowledge that is not derived from any other "known" sentences.
   7. Complex senmtence - A new sentence constructed from other simpler sentences using logical connectives.
+
+        ![SiA](../Assets/knowledge_reasoning/CS.png)
+
   8. Literal - There are 2 literals:
     - Positive literal - An atomic sentence,
     - Negative literal - A negated atomic sentence.
-  9. Syntax - A rule that defines the allowable sentences.
-  10. Semantics - The meaning of sentences.
+  9.  Syntax - A rule that defines the allowable sentences.
+  10. Semantics - Rules for determining the truth of a sentence with respect to a particular model.
+
+        ![SiA](../Assets/knowledge_reasoning/SS.png)
+
   11. Logic - An interdisciplinary field which studies truth and reasoning and which applies syllogism.
   12. Declarative Approach - Telling the agent all sentences one by one until the agent knows how to operate in its environment.
 
@@ -54,150 +67,150 @@
 
     To be able to explain what an inference algorithm does, we need to understand to concept of entailment. In logical reasoning there is an involvement of logical entailment between sentences which is the idea that a sentence follows logically from another sentence. Mathematically, this idea is written
 
-    ![Entailment](../../Assets/knowledge_reasoning/maths/entailment_def.png)
+    ![Entailment](../Assets/knowledge_reasoning/maths/entailment_def.png)
     
     The formal definition of entailment is that the sentence alpha entails the sentence beta if and only if in every model in which alpha is true, beta will also be true. This is written as 
     
-    ![Entailment-Def](../../Assets/knowledge_reasoning/maths/entailment_def.png) iff ![Formal-Entailment](../../Assets/knowledge_reasoning/maths/formal_entailment.png).
+    ![Entailment-Def](../Assets/knowledge_reasoning/maths/entailment_def.png) iff ![Formal-Entailment](../Assets/knowledge_reasoning/maths/formal_entailment.png).
     
     Now, the connection between entailment and inference algorithm is that the entailment is applied to derive conslusions that will carry out the logical inference. To understand it better, think of "Entailment" as a needle in a haystack and the inference is the process to find it.
 
-    ![Entailment](../../Assets/knowledge_reasoning/Entailment.png)
+    ![Entailment](../Assets/knowledge_reasoning/Entailment.png)
 
 - ### **Propositional Logic**
 
     In this project, I applied the so called "Propositional Logic" which is the branch of logic that studies ways of joining and/or modifying entire propositions, statements or sentences to form more complicated propositions, statements or sentences, as well as the logical relationships and properties that are derived from these methods of combining or altering statements. To implement propositional logic, we always need to describe its syntax and semantics which will derive a syntactic algorithm for logical inference that implement the semantic notion of entailment. The syntax of propositional logic defines the allowed numbers of sentences. Propositional logic has the so called "Propositional Symbols" that can be connected by the "Logical Connectives".
     
-    ![Prop-Symbols](../../Assets/knowledge_reasoning/Prop-Symbols.png)
+    ![Prop-Symbols](../Assets/knowledge_reasoning/Prop-Symbols.png)
 
     Propositional symbols are arbitrary uppercase letters in which each letter used to represent the proposition that can be either "True" or "False".
     
-    ![Logical-Conn](../../Assets/knowledge_reasoning/Logical-Conn.png)
+    ![Logical-Conn](../Assets/knowledge_reasoning/Logical-Conn.png)
 
     Logical connectives are operators that construct complex sentences from simpler ones. There are 5 connectives:
 
-    1. A sentence such with ![Not](../../Assets/knowledge_reasoning/maths/neg_p.png) is pronounced the negation of P.
+    1. A sentence such with ![Not](../Assets/knowledge_reasoning/maths/neg_p.png) is pronounced the negation of P.
 
-        ![Not](../../Assets/knowledge_reasoning/Not.png)
+        ![Not](../Assets/knowledge_reasoning/Not.png)
 
     2. And connective is also called "Conjunction".
 
-        ![And](../../Assets/knowledge_reasoning/And.png)
+        ![And](../Assets/knowledge_reasoning/And.png)
 
     3. Or connective is also called "Disjunction".
 
-        ![Or](../../Assets/knowledge_reasoning/Or.png)
+        ![Or](../Assets/knowledge_reasoning/Or.png)
 
-    4. Implication such as ![Imp](../../Assets/knowledge_reasoning/maths/implication-1.png) has 2 parts. The ![Imp](../../Assets/knowledge_reasoning/maths/p_wedge_q.png) is called "Premise" or "Entecedent" and ![Imp](../../Assets/knowledge_reasoning/maths/neg_r.png) "Conclusion" or "Consequent". The right arrow symbolizes the "Implication".
+    4. Implication such as ![Imp](../Assets/knowledge_reasoning/maths/implication-1.png) has 2 parts. The ![Imp](../Assets/knowledge_reasoning/maths/p_wedge_q.png) is called "Premise" or "Entecedent" and ![Imp](../Assets/knowledge_reasoning/maths/neg_r.png) "Conclusion" or "Consequent". The right arrow symbolizes the "Implication".
 
-        ![Implication](../../Assets/knowledge_reasoning/Implication.png)
+        ![Implication](../Assets/knowledge_reasoning/Implication.png)
 
-    5. Biconditional ![Imp](../../Assets/knowledge_reasoning/maths/bicon.png) symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because P is false and Q is also false. Biconditional is true if and only if P and Q have the same truthy or falsy value.
+    5. Biconditional ![Imp](../Assets/knowledge_reasoning/maths/bicon.png) symbolizes "If and only if". The below figure might get confusing, but let's take the first row. The first row says that the biconditional is true. This is because P is false and Q is also false. Biconditional is true if and only if P and Q have the same truthy or falsy value.
 
-        ![Biconditional](../../Assets/knowledge_reasoning/Biconditional.png)
+        ![Biconditional](../Assets/knowledge_reasoning/Biconditional.png)
 
 - ### **Inference Algorithm with Model Checking Approach**
 
     Inference is the process of deriving new sentences from the old ones.
     
-    ![Inference](../../Assets/knowledge_reasoning/Inference.png)
+    ![Inference](../Assets/knowledge_reasoning/Inference.png)
     
     The inference algorithm is generally notated as
 
-    ![Inference](../../Assets/knowledge_reasoning/kb_a.png)
+    ![Inference](../Assets/knowledge_reasoning/kb_a.png)
 
     One of the approach for inference algorithm is the model checking approach which is used in this project. Models in inference algorithm are just the assignment of true or false to every proposition symbol:
         
-    ![Model](../../Assets/knowledge_reasoning/Model-IA.png)
+    ![Model](../Assets/knowledge_reasoning/Model-IA.png)
     
     Model checking works by enumerating all possible models to check that $\alpha$ is true in all models in which KB is true, or mathematically written
 
-    ![Model](../../Assets/knowledge_reasoning/maths/mkb_ma.png)
+    ![Model](../Assets/knowledge_reasoning/maths/mkb_ma.png)
 
-    ![Model-Checking](../../Assets/knowledge_reasoning/MC.png)
+    ![Model-Checking](../Assets/knowledge_reasoning/MC.png)
 
     - Example of "Model-Checking Approach":
 
-    ![Example-1](../../Assets/knowledge_reasoning/EG-MC-1.png)
+    ![Example-1](../Assets/knowledge_reasoning/EG-MC-1.png)
 
-    ![Example-1](../../Assets/knowledge_reasoning/EG-MC-2.png)
+    ![Example-1](../Assets/knowledge_reasoning/EG-MC-2.png)
 
-    ![Example-1](../../Assets/knowledge_reasoning/EG-MC-3.png)
+    ![Example-1](../Assets/knowledge_reasoning/EG-MC-3.png)
 
     - Inference Rules
         To make it easier to use the connectives, there are inference rules that can be used in inference algorithm. In all the figure below, the line separates the sentence (on the top part) and consequent on the bottom:
 
         1. Modus Ponens
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/ModusPonens-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/ModusPonens-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/ModusPonens-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/ModusPonens-2.png)
 
         2. And Elimination
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/AE-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/AE-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/AE-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/AE-2.png)
 
         3. Double Negation Elimination
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/DNE-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/DNE-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/DNE-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/DNE-2.png)
 
         4. Implication Elimination
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/IE-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/IE-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/IE-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/IE-2.png)
 
         5. Biconditional Elimination
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/BE-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/BE-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/BE-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/BE-2.png)
 
         6. De Morgan's Law (And to Or)
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/DML-AO-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/DML-AO-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/DML-AO-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/DML-AO-2.png)
 
         7. De Morgan's Law (Or to And)
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/DML-OA-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/DML-OA-1.png)
 
             - Translated to propositional symbols and connectives:
 
-                ![Modus-Ponens-2](../../Assets/knowledge_reasoning/DML-OA-2.png)
+                ![Modus-Ponens-2](../Assets/knowledge_reasoning/DML-OA-2.png)
             
     - Property of Inference - Distributive
           
         1. And - Distributivity:
 
-            ![Modus-Ponens-1](../../Assets/knowledge_reasoning/IP-1.png)
+            ![Modus-Ponens-1](../Assets/knowledge_reasoning/IP-1.png)
 
         2. Or - Distributivity:
 
-            ![Modus-Ponens-2](../../Assets/knowledge_reasoning/IP-2.png)
+            ![Modus-Ponens-2](../Assets/knowledge_reasoning/IP-2.png)
 
 - ### Results:
 
     Firtsly, Sentences that are valid for all puzzles:
 
-    ![KB](../../Assets/knowledge_reasoning/algorithm_results/Res-IK.png)
+    ![KB](../Assets/knowledge_reasoning/algorithm_results/Res-IK.png)
 
     Secondly, don't forget the 3 basic rules of the puzzle which is considered also as the Knowledge Base:
 
@@ -213,27 +226,27 @@
 
       - Added Knowledge base based on what A said:
 
-          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-0.png)
+          ![KB](../Assets/knowledge_reasoning/algorithm_results/KB-PZ-0.png)
 
       - Implemented Knowledge by declarative approach:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-0.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/I-PZ-0.png)
 
       - Result:
           
           Since being both claseses at the same time is against the game rule and character B doesn't want or can't say that B is also both classes at the same time, this concludes that A must be lying, hence A is the Knave. Since B can't lie, hence B is the knight.
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-0.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/Res-PZ-0.png)
 
   2. Puzzle 1:
      
       - Added Knowledge base based on what A said:
 
-          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-1.png)
+          ![KB](../Assets/knowledge_reasoning/algorithm_results/KB-PZ-1.png)
 
       - Implemented Knowledge by declarative approach:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-1.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/I-PZ-1.png)
 
       - Result:
           
@@ -241,34 +254,34 @@
 
           Since I explained this in my approach strategy and the approach for the result is always the same, I will stop writting in the next puzzles and let my comments guide you.
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-1.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/Res-PZ-1.png)
 
   3. Puzzle 2:
      
       - Added Knowledge base based on what A and B said:
 
-          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-2.png)
+          ![KB](../Assets/knowledge_reasoning/algorithm_results/KB-PZ-2.png)
 
       - Implemented Knowledge by declarative approach:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-2.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/I-PZ-2.png)
 
       - Result:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-2.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/Res-PZ-2.png)
 
   4. Puzzle 3:
 
       - Added Knowledge base based on what A, B, and C said:
 
-          ![KB](../../Assets/knowledge_reasoning/algorithm_results/KB-PZ-3.png)
+          ![KB](../Assets/knowledge_reasoning/algorithm_results/KB-PZ-3.png)
 
       - Implemented Knowledge by declarative approach:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/I-PZ-3.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/I-PZ-3.png)
 
       - Result:
 
-          ![K](../../Assets/knowledge_reasoning/algorithm_results/Res-PZ-3.png)
+          ![K](../Assets/knowledge_reasoning/algorithm_results/Res-PZ-3.png)
 
 ### Location: https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge%26Reasoning/knightsandknaves

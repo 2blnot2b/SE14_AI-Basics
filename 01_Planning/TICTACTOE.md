@@ -47,6 +47,8 @@
 
 ## Applied Algorithms: Minimax and Alpha-Beta Pruning
 
+![P](../Assets/planning/BE-P.png)
+
 In this section, I will visually explain the so called **state space graph** which is a graph where the **vertices** are states (or boards in our case), the **edges** are actions (or moves in our case), and a state might be reached by multiple paths. The graph is also called the **game tree** which is a **search tree** that follows every sequence of moves **all the way** to a terminal state.
 
 - #### **Minimax**
@@ -59,7 +61,15 @@ In this section, I will visually explain the so called **state space graph** whi
 
     **"Minimizing the possible loss for a worst case scenarion which is the maximum loss."**
 
-    Minimax performs the complete depth-first search exploration of the game tree. It is a recursive algorithm that proceeds all the way to the leaves of the tree and then backs up the minimax values through the trees as the recursion unwinds. The algorithm will always start exploring the very left path of the tree into its very last leaf and then goes 1 hierarchy up, to then goes down the path right from its previous path.    
+    Minimax performs the complete depth-first search exploration of the game tree. It is a recursive algorithm that proceeds all the way to the leaves of the tree and then backs up the minimax values through the trees as the recursion unwinds. The algorithm will always start exploring the very left path of the tree into its very last leaf and then goes 1 hierarchy up, to then goes down the path right from its previous path.
+
+    Since the MAX player always starts, the behaviour is to explore boards (states).
+
+    ![MM-BX](../Assets/planning/FB-X.png)
+
+    Meanwhile, MIN player explores all the boards starting where MAX player chosed to put the "X" (in this example X is in (0, 1)).
+
+    ![MM-BO](../Assets/planning/FB-O.png)
     
     If the maximum depth of the tree is n and there are b legal moves in each turn then the time complexity is measured by ![MM-TC](../Assets/planning/maths/minmax_tc.png). and the space complexity is ![MM-SC](../Assets/planning/maths/minmax_sc.png) Mathematically, minimax algorithm is written as
 
@@ -67,20 +77,49 @@ In this section, I will visually explain the so called **state space graph** whi
 
     In Tic-Tac-Toe, each state of the board is presented in each leaf node of the entire tree. In each turn, MAX will iterate over all possible states which are valued numerically as a sign to show that one state is better than the other states. Max choses the highest value possible after comparing it to a helper value which is ![Neg-Inf](../Assets/planning/maths/neg_infin.png) or the worst possible value for MAX. MIN does exactly the same steps but unlike MAX, MIN choses the lowest possible value after comparing it to its worst possible value which is ![Pos-Inf](../Assets/planning/maths/infin.png).
 
+    MIN player choses the lowest possible value (-1) to decide its next move.
+
+    ![O-T](../Assets/planning/O-T.png)
+
+    MAX player then choses the highest possible value (1) to decide its next move.
+
+    ![X-T](../Assets/planning/X-T.png)
+
+    This interchangable turns continue until the winner is decided or the game ends with a draw (value 0).
 - #### **Alpha-Beta Pruning**
 
   - Pseudo Code
 
     - Minimax without Helper Functions
         
-        ![MM](../Assets/planning/PC-ABP.png)
+        ![MM](../Assets/planning/PC-AB.png)
 
   - Alpha-Beta Pruning
   
-    Alpha-beta pruning is Minimax with the capability to prune (cut or ignore) any node left in the tree that will result in a faster decision making. THe general principle is that as soon as MAX find a value that is higher or equal to beta, it will cut off the entire rest of the leaves nodes that haven't been explored. For MIN, it will cut the rest of the leaves node if the value is smaller or equal to the value of alpha. The value alpha and beta describe the bounds on the backed-up values that appear in each leaf node  along the path.
+    Alpha-beta pruning is Minimax with the capability to prune (cut or ignore) any node left in the tree that will result in a faster decision making. The general principle is that as soon as MAX finds a value that is higher or equal to beta, it will cut off the entire rest of the leaf nodess that haven't been explored. For MIN, it will cut the rest of the leaf nodes if the value is smaller or equal to the value of alpha. The value alpha and beta describe the bounds on the backed-up values that appear in each leaf node  along the path.
 
     - ![Alpha](../Assets/planning/maths/alpha.png) represents the value (best) of the best choice found so far at any node along the path of MAX; Also called "At least" with the starting value of ![Neg-Inf](../Assets/planning/maths/neg_infin.png).
     - ![Beta](../Assets/planning/maths/beta.png) represents the value (lowest) of the best choice found so far at any node along the path of MIN; Also called "At most" with the starting value of ![Pos-Inf](../Assets/planning/maths/infin.png).
+
+    MAX always start with ![Neg-Inf](../Assets/planning/maths/neg_infin.png) because it is the worst possible value for MAX player and MIN always start with ![Pos-Inf](../Assets/planning/maths/infin.png) because it is also the worst possible value for MIN player.
+
+    Because MAX starts, it will explore the end leaf nodes on the left path of the tree (just like minimax). The difference it that alpha-beta pruning will not take go through all the boards, but only the first 2 to have a comparison values.
+
+    ![ABP-FT-X1](../Assets/planning/ABP-FT-X-1.png)
+
+    Remember, MAX can only modify the value of ![Beta](../Assets/planning/maths/alpha.png), while MIN modify ![Alpha](../Assets/planning/maths/beta.png). The moment MAX got its first 2 values in the end leaf node in the very left path, it compares the value with beta from each level of the tree nodes. Since MAX needs a value that is bigger than or at least equal to beta, this is where the first cut-off begins. Notice at the very first move that  MIN is still infinity. This is because MIN hasn't actually had its turn yet.
+
+    ![ABP-FT-X](../Assets/planning/ABP-FT-X-2.png)
+
+    Let's pretend that the this is turn number 6 and its MIN turn and these are the boards available for MIN player.
+
+    ![KM-MIN](../Assets/planning/O-T-L.png)
+
+    Based on the above values of ![Beta](../Assets/planning/maths/beta.png), MIN will choose the board with the value -1, since that is the value wanted by MIN player.
+
+    ![KM-MIN](../Assets/planning/O-W.png)
+
+    And the game is over since we have the terminal board where MIN won the game.
 
     Time complexity in alpha-beta pruning with even is ![ABP-TC](../Assets/planning/maths/abp_tc.png) and so the space complexity is ![ABP-SC](../Assets/planning/maths/abp_sc.png). This means that alpha-beta with perfect ordering can solve a tree approximately twice as deep as minimax in the same amount of time.
 

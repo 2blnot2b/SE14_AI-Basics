@@ -15,9 +15,9 @@
 2. The 4 Areas of AI
 3. Projects:
 
-    - [Planning: Tic-Tac-Toe](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/01_Planning/tictactoe)
-    - [Knowledge & Reasoning: Knights and Knaves](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge%26Reasoning/knightsandknaves)
-    - [Optimization: Crosswords](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/03_Optimization/crosswords)
+    - [Planning: Tic-Tac-Toe](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/01_Planning)
+    - [Knowledge & Reasoning: Knights and Knaves](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/02_Knowledge%26Reasoning)
+    - [Optimization: Crosswords](https://github.com/Artificial-Ninoligence/SE14_AI-Basics/tree/main/03_Optimization)
 
 4. Learning Resources
 

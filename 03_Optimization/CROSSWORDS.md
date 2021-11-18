@@ -76,7 +76,7 @@
 
   Constraint propagation is a great inference method, but it is not perfect. Sometimes, it leaves behind variables with multiple possible values and this is where "Backtracking" finishes the job! This algorithm is modeled on the recursive version of depth-first search Backtracking search only keeps a single representation of a state and alters that representation rather than creating new ones. In Backtracking search algorithm for CSP, the algorithm repeatedly chooses an unassigned variable and iterates over all possible values in the domain of that variable (in turn), trying to extend each one of them into the solution in a recursive manner. If the execution is successful, it returns the solution. If it failed, it will restore the previous state and tries the next assignment. At the end, if no value works  for the assignment, then it will return "No Solution".
 
-  Backtracking search algorithm ca be improved using the "Domain-Independent Heuristics" that take advantage of the factored representation of constraint satisfactory problems.
+  Backtracking search algorithm can be improved using the "Domain-Independent Heuristics" that take advantage of the factored representation of constraint satisfactory problems.
 
 - #### **Heuristic Approach**
 
